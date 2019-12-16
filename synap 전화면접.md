@@ -15,10 +15,10 @@ C 컴파일러는 시작할 때부터 a와 b는 정수형이라는 것을 알고
 정수형을 아는 것으로는 메모리 상의 단순한 값에 두 개의 정수를 더하고, 이를 다른 정수로 변환하는 루틴을
 호출할 수 있다. 개략적인 도식으로 나타내면 이벤트의 순서는 다음과 같다.
 ### C 덧셈
-1. <int> 1을 a에 할당
-2. <int> 2을 b에 할당
-3. binary_add<int, int>(a,b) 호출
-4. 결과를 c에 할당  
+1. <int> 1을 a에 할당  
+2. <int> 2을 b에 할당  
+3. binary_add<int, int>(a,b) 호출  
+4. 결과를 c에 할당    
   
 파이썬에서의 같은 역할의 코드는 아래와 같다.
 ```python
@@ -32,22 +32,22 @@ c = a+b
   
 이벤트의 순서는 대략 다음과 같다.
 ###파이썬 덧셈
-1. a에 1을 할당
-1a. a->PyObject_HEAD->typecode 정수 설정
-1b. a->val = 1 설정
-2. b에 2를 할당
-2a. b->PyObject_HEAD->typecode 정수 설정
-2b. b->val = 2 설정
-3. binary_add(a,b) 호출
-3a. a->PyObject_HEAD 에서 typecode 찾기
-3b. a는 정수형; 값 a->val
-3c. b->PyObject_HEAD 에서 typecode 찾기
-3d. b는 정수형; 값 b->val
-3e. binary_add<int, int>(a->val, b->val) 호출
-3f. 정수형 결과값 result
-4. 파이썬 개체 c 생성
-4a. c->PyObject_HEAD->typecode 정수 설정
-4b. c->val에 result 설정
+1. a에 1을 할당  
+1a. a->PyObject_HEAD->typecode 정수 설정  
+1b. a->val = 1 설정  
+2. b에 2를 할당  
+2a. b->PyObject_HEAD->typecode 정수 설정  
+2b. b->val = 2 설정  
+3. binary_add(a,b) 호출  
+3a. a->PyObject_HEAD 에서 typecode 찾기  
+3b. a는 정수형; 값 a->val  
+3c. b->PyObject_HEAD 에서 typecode 찾기  
+3d. b는 정수형; 값 b->val  
+3e. binary_add<int, int>(a->val, b->val) 호출  
+3f. 정수형 결과값 result  
+4. 파이썬 개체 c 생성  
+4a. c->PyObject_HEAD->typecode 정수 설정  
+4b. c->val에 result 설정  
 
 동적 타이핑은 모든 작업에 더 많은 단계가 있다는 것은 의미한다. 이것이 숫자데이터에 관한 연산에서 C언어와 비교했을 떄,
 파이썬이 느린 가장 큰 이유이다.
