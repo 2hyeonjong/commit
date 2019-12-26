@@ -1,5 +1,3 @@
-#money.py
-
 def solution(n):
     units = ['']+list('십백천')
     won = list('조억만원')
@@ -34,14 +32,16 @@ def solution(n):
         if i == '' : won_index -= 1
         else :
             if len(table) > 1:
-                if i[0] =='일' and len(i) >=2 : i = i.replace('일', '')
-            answer.append(i+won[won_index]+ ' ') 
+                if i[0] =='일' and len(i) >=2 : i = i[1:]
+                if '일' in i[:-1] : i = i[:-1].replace('일','') + i[-1:]
+            answer.append(i+won[won_index]+ ' ')
             won_index -= 1
-    answer = ''.join(answer[::-1]) 
+    answer = ''.join(answer[::-1])
     return answer[:-1] if answer[-2] == '원' else answer[:-1] +'원'
 
 print(solution('1원'))
 print(solution('80,270원'))
+print(solution('100,014,001,010원'))
 print(solution('1,234,567,890원'))
 print(solution('111,111원'))
 print(solution('100,000,000,000,000원'))
